@@ -19,7 +19,7 @@ def send_slack(stream_infos)
     parms = { "text" => "Stream is now offline :(" }
   end
   
-  url = ENV['SLACK_WEBHOOK_URL']
+  url = Hook['env']['SLACK_WEBHOOK_URL']
 
   uri = URI.parse(url)
   http = Net::HTTP.new(uri.host, uri.port)
@@ -39,7 +39,7 @@ def check_twitch(streamer)
   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   headers = {
     'Accept' => "application/vnd.twitchtv.v3+json",
-    'Client-ID' => ENV['TWITCH_CLIENT_ID']
+    'Client-ID' => Hook['env']['TWITCH_CLIENT_ID']
   }
   resp = http.get(uri.path, headers)
   json = JSON.parse(resp.body)
