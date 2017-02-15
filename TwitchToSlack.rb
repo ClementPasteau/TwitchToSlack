@@ -59,7 +59,6 @@ streamers.each do |streamer|
 
   if stream_infos
 
-    name         = stream_infos["channel"]["display_name"]
     stream_start = stream_infos["created_at"]
     online_since = (Time.now - Time.parse(stream_start))
 
@@ -68,12 +67,13 @@ streamers.each do |streamer|
       puts "Sent Slack notification !"
       send_slack(stream_infos)
     elsif
-      puts "#{name} stream started more than 30min ago, didn't sent Slack notification !"
+      send_slack(stream_infos)
+      puts "#{streamer.capitalize} stream started more than 30min ago, didn't sent Slack notification !"
     end
 
   else
 
-    puts "#{name} stream offline, didn't sent Slack notification !"
+    puts "#{streamer.capitalize} stream offline, didn't sent Slack notification !"
 
   end
 end
