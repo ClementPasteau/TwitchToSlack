@@ -67,7 +67,6 @@ streamers.each do |streamer|
       puts "Sent Slack notification !"
       send_slack(stream_infos)
     elsif
-      send_slack(stream_infos)
       puts "#{streamer.capitalize} stream started more than 30min ago, didn't sent Slack notification !"
     end
 
