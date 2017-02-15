@@ -52,7 +52,7 @@ end
 
 
 
-streamers = ["twoeasy", "kolento", "kronovi", "pashabiceps", "scream"]
+streamers = ["twoeasy", "kolento", "kronovi", "pashabiceps", "scream", "danzhizzle"]
 
 streamers.each do |streamer|
   stream_infos	= check_twitch(streamer)
